@@ -16,7 +16,7 @@ from PIL.ImageTk import PhotoImage                # PIL photo widget replacement
 import image_views  
 import file_helper
 import cnn_feature_service
-import aes
+import aes_AADB_opencv as aes
 import json
 
 import embedding_2d
@@ -42,7 +42,7 @@ class image_set:
         
         self.is_Features_ready=False
         self.is_Scores_ready=False
-#        self.scoring=aes.scoring()
+        self.scoring=aes.scoring()
 
         model_type='ResNet_18'
         self.param=cfg.param(model_type)

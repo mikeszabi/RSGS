@@ -21,18 +21,18 @@ import mimetypes
 class scoring:
     def __init__(self):
          # authentication
-        url='https://api.picturio.com/token'
-
-        user='szabolcs.mike@gmail.com'
-        pswd='p1ctur3sq3'
-
-        data = {'grant_type':'password',
-                'username':user,
-                'password':pswd}
-        
-        response = requests.post(url, data=data)
-        
-        self.out_token=response.json()
+#        url='https://api.picturio.com/token'
+#
+#        user='szabolcs.mike@gmail.com'
+#        pswd='p1ctur3sq3'
+#
+#        data = {'grant_type':'password',
+#                'username':user,
+#                'password':pswd}
+#        
+#        response = requests.post(url, data=data)
+#        
+#        self.out_token=response.json()
         
         
     def get_scores(self,image_files):       

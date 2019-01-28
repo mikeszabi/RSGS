@@ -65,7 +65,7 @@ def k_means(features,n_clusters,vis_diag=True):
 
     feat_array=np.asarray(feat_list)
     
-    pca = PCA(n_components=25)
+    pca = PCA(n_components=min(25,len(feat_array)))
     pca_feat_array = pca.fit_transform(feat_array)
     
     kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(pca_feat_array)

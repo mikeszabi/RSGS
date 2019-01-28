@@ -42,7 +42,7 @@ class image_set:
         
         self.is_Features_ready=False
         self.is_Scores_ready=False
-        self.scoring=aes.scoring()
+#        self.scoring=aes.scoring()
 
         model_type='ResNet_18'
         self.param=cfg.param(model_type)
@@ -69,6 +69,7 @@ class image_set:
                 with open(image_score_file, 'r') as fp:
                     im_scores = json.load(fp)
             else:
+                # Get the scores
                 image_all_scores=self.scoring.get_scores(self.image_list)
                 im_scores={}
                 for i,image in enumerate(self.image_list):
@@ -141,7 +142,7 @@ class rsgs(tk.Frame):
 
     def onScoring(self):
         """
-        creating features
+        creating scores
         """
         self.imset.create_image_score()
         if self.imset.image_scores:

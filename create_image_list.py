@@ -9,13 +9,13 @@ import file_helper
 import os
 import json
 
-#base_folder = r'd:\Projects\WISH'
+#base_folder = r'd:\DATA\Alinari\'
 base_folder = os.path.curdir
 
-user='SzMike' # picturio
+#user='SzMike' # picturio
 
 
-image_dir=os.path.join(r'd:\DATA\RealEstate\117094')
+image_dir=os.path.join(r'd:\DATA\RealEstate\Test\117094')
 
 image_list_file=os.path.join(base_folder,'input','image_list.json')
 

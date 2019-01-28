@@ -12,7 +12,6 @@ import argparse
 import json
 
 from cntk.ops import softmax
-from cntk.device import set_default_device, cpu
 from cntk import load_model
 from cntk.ops import combine
 from PIL import Image
@@ -30,11 +29,11 @@ def load_db_features(db_feature_file):
 
 class cnn_db_features:
     def __init__(self,):
-        set_default_device(cpu())
+#        set_default_device(cpu())
 
         base_folder = os.path.abspath(os.path.curdir)        
         # input, output, model directory
-        model_type='ResNet_152'
+        model_type='ResNet_18'
         
         self.param=cfg.param(model_type)
         

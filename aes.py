@@ -7,10 +7,10 @@ Created on Fri Apr 28 13:25:26 2017
 
 
 import requests
-from pprint import pprint
+#from pprint import pprint
 import json
 import os
-from PIL import Image
+#from PIL import Image
 import mimetypes
 
 #
@@ -38,10 +38,12 @@ class scoring:
     def get_scores(self,image_files):       
         
         # create processing session
+        out_token=self.out_token
+        
         url='https://api.picturio.com/processing' 
         
-        data = {'SourceType': 1,  'GroupGranularity': 0 }
-        header = {'Authorization':'Bearer '+self.out_token['access_token'],
+        data = {'SourceType': 1,  'GroupGranularity': 0, 'GroupingType':2 }
+        header = {'Authorization':'Bearer '+out_token['access_token'],
                   'content-type':'application/json',
                   'accept':'application/json'}
         response = requests.post(url, headers=header, data=json.dumps(data))
@@ -52,23 +54,26 @@ class scoring:
         url='https://api.picturio.com//processing//'+session_id+'//add-image'
         
         headers={}
-        headers['Authorization']='Bearer '+self.out_token['access_token']
+        headers['Authorization']='Bearer '+out_token['access_token']
         headers['accept']='application/json'
 
         files={}
         for images in image_files:
             fname=os.path.basename(images)
+            files={}
             files[fname]=(fname,open(images, 'rb'),mimetypes.guess_type(image_files[0])[0])
+        #files[fname]=(fname,open(images, 'rb'),mimetypes.guess_type(image_files[0])[0])
+            
         #files={'file':('10022.jpg',open(image_files[0], 'rb'),mimetypes.guess_type(image_files[0])[0])}
-        response = requests.post(url, headers=headers, files=files)
-        print(response)
+            response = requests.post(url, headers=headers, files=files)
+            print(response)
         #
 
 
         ## PROCESS
         
         url='https://api.picturio.com//processing//'+session_id
-        header = {'Authorization':'Bearer '+self.out_token['access_token'],'accept':'application/json'}
+        header = {'Authorization':'Bearer '+out_token['access_token'],'accept':'application/json'}
         
         pr=requests.get(url,headers=header)
         print(pr)
@@ -76,7 +81,7 @@ class scoring:
 
         ## STATUS
         url='https://api.picturio.com//processing//'+session_id+'//status'
-        header = {'Authorization':'Bearer '+self.out_token['access_token'],'accept':'application/json'}
+        header = {'Authorization':'Bearer '+out_token['access_token'],'accept':'application/json'}
 
         isCompleted=False
         while not isCompleted:
@@ -87,7 +92,7 @@ class scoring:
 
         ## results
         url='https://api.picturio.com//processing//'+session_id+'//result'
-        header = {'Authorization':'Bearer '+self.out_token['access_token'],'accept':'application/json'}
+        header = {'Authorization':'Bearer '+out_token['access_token'],'accept':'application/json'}
         
         res=requests.get(url,headers=header)
         

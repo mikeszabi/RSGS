@@ -237,7 +237,7 @@ def viewThumbs(image_label, set_id, kind=tk.Toplevel, numcols=None, height=600, 
     return win
 
 
-def makeThumbs(image_list, size=(200, 200), subdir='thumbs'):
+def makeThumbs(image_list, size=(150, 150), subdir='thumbs'):
     """
     get thumbnail images for all images in a directory;
     for each image, create and save a new thumb, or load

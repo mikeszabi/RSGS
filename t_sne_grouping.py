@@ -56,7 +56,7 @@ granularity=6
 
 #base_folder = r'd:\Projects\WISH'
 base_folder = os.path.curdir
-feature_file=r'd:\DATA\RealEstate\144939\features.json'
+feature_file=r'd:\DATA\RealEstate\784730\features.json'
 
 features=cnn_feature_service.load_db_features(feature_file)
 
@@ -70,7 +70,7 @@ for im in features.keys():
 feat_list=[np.asarray(feat) for feat in features.values()]
 
 feat_array=np.asarray(feat_list)
-pca = PCA(n_components=25)
+pca = PCA(n_components=20)
 pca_feat_array = pca.fit_transform(feat_array)
     
 model = manifold.TSNE(n_components=2, random_state=0, \
